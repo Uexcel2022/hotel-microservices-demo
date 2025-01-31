@@ -9,11 +9,20 @@ services:
       service: "network-deploy-service"
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eurekaserver:8075/eureka/"
+      SPRING_APPLICATION_NAME: "gatewayserver"
+      OTEL_SERVICE_NAME: "gatewayserver"
+      SPRING_DATA_REDIS_CONNECT-TIMEOUT: 2S
+      SPRING_DATA_REDIS_HOST: redis
+      SPRING_DATA_REDIS_PORT: 6379
+      SPRING_DATA_REDIS_TIMEOUT: 1s
+#      SPRING_SECURITY_OAUTH2_RESOURCESERVER_JWT_JWK-SET-URI: "http://keycloak:8080/realms/eazybank/protocol/openid-connect/certs"
     depends_on:
       apartment:
         condition: service_healthy
       executive:
         condition: service_healthy
       regular:
+        condition: service_healthy
+      redis:
         condition: service_healthy
 
