@@ -1,12 +1,12 @@
 services:
   gatewayserver:
-    image: "uexcel247/gatewayserver:1.0"
+    image: "uexcel247/gatewayserver:2.0"
     container_name: "gatewayserver-ms"
     ports:
       - "9000:9000"
     extends:
       file: common-config.yaml
-      service: "network-deploy-service"
+      service: "logging"
     environment:
       EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eurekaserver:8075/eureka/"
       SPRING_APPLICATION_NAME: "gatewayserver"

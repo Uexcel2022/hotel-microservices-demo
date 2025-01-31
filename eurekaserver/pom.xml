@@ -12,7 +12,7 @@
 	<artifactId>eurekaserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eurekaserver</name>
-	<description>Service Discovery agent for Eazy Bank microservices</description>
+	<description>Service Discovery agent for hotel microservices</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
+		<otelVersion>1.33.5</otelVersion>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,6 +49,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry.javaagent</groupId>
+			<artifactId>opentelemetry-javaagent</artifactId>
+			<version>${otelVersion}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
@@ -69,7 +80,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>uexcel247/${project.artifactId}:1.0</image>
+						<image>uexcel247/${project.artifactId}:2.0</image>
 					</to>
 				</configuration>
 			</plugin>

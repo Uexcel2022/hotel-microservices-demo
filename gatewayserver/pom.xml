@@ -29,6 +29,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.3</spring-cloud.version>
+		<otelVersion>1.33.5</otelVersion>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -58,6 +59,16 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.opentelemetry.javaagent</groupId>
+			<artifactId>opentelemetry-javaagent</artifactId>
+			<version>${otelVersion}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -95,7 +106,7 @@
 				<version>3.4.1</version>
 				<configuration>
 					<to>
-						<image>uexcel247/${project.artifactId}:1.0</image>
+						<image>uexcel247/${project.artifactId}:2.0</image>
 					</to>
 				</configuration>
 			</plugin>

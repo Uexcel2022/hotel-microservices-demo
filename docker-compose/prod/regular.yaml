@@ -1,6 +1,6 @@
 services:
   regular:
-    image: "uexcel247/regular:1.0"
+    image: "uexcel247/regular:2.0"
     container_name: "regular-ms"
     ports:
       - "8080:8080"
@@ -11,6 +11,7 @@ services:
         condition: service_healthy
     environment:
       SPRING_APPLICATION_NAME: "regular"
+      OTEL_SERVICE_NAME: "regular"
       SPRING_DATASOURCE_URL: "jdbc:mysql://regularDB:3306/regular"
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_DATASOURCE_USERNAME: root
@@ -18,5 +19,5 @@ services:
       NUMBER_OF_ROOMS: 5
     extends:
       file: common-config.yaml
-      service: network-deploy-service
+      service: logging
 

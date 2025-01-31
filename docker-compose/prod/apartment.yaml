@@ -1,6 +1,6 @@
 services:
   apartment:
-    image: "uexcel247/apartment:1.0"
+    image: "uexcel247/apartment:2.0"
     container_name: "apartment-ms"
     ports:
       - "8085:8085"
@@ -8,6 +8,7 @@ services:
       test: "curl --fail --silent localhost:8085/actuator/health/readiness | grep UP || exit 1"
     environment:
       SPRING_APPLICATION_NAME: "apartment"
+      OTEL_SERVICE_NAME: "apartment"
       SPRING_DATASOURCE_URL: "jdbc:mysql://apartmentDB:3306/apartment"
       SPRING_DATASOURCE_PASSWORD: root
       SPRING_DATASOURCE_USERNAME: root
@@ -15,5 +16,5 @@ services:
       NUMBER_OF_ROOMS: 5
     extends:
       file: common-config.yaml
-      service: network-deploy-service
+      service: logging
 

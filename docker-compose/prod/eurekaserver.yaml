@@ -2,8 +2,8 @@ services:
   eureka:
     extends:
       file: common-config.yaml
-      service: "network-deploy-service"
-    image: "uexcel247/eurekaserver:1.0"
+      service: "logging"
+    image: "uexcel247/eurekaserver:2.0"
     container_name: eurekaserver-ms
     ports:
       - "8075:8075"
@@ -15,4 +15,5 @@ services:
         start_period: 10s
     environment:
           SPRING_APPLICATION_NAME: "eurekaserver"
+          OTEL_SERVICE_NAME: "eurekaserver"
 
