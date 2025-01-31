@@ -1,0 +1,19 @@
+services:
+  gatewayserver:
+    image: "uexcel247/gatewayserver:1.0"
+    container_name: "gatewayserver-ms"
+    ports:
+      - "9000:9000"
+    extends:
+      file: common-config.yaml
+      service: "network-deploy-service"
+    environment:
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eurekaserver:8075/eureka/"
+    depends_on:
+      apartment:
+        condition: service_healthy
+      executive:
+        condition: service_healthy
+      regular:
+        condition: service_healthy
+

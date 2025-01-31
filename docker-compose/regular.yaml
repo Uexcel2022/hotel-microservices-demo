@@ -1,0 +1,22 @@
+services:
+  regular:
+    image: "uexcel247/regular:1.0"
+    container_name: "regular-ms"
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: "curl --fail --silent localhost:8080/actuator/health/readiness | grep UP || exit 1"
+    depends_on:
+      regularDB:
+        condition: service_healthy
+    environment:
+      SPRING_APPLICATION_NAME: "regular"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://regularDB:3306/regular"
+      SPRING_DATASOURCE_PASSWORD: root
+      SPRING_DATASOURCE_USERNAME: root
+      EUREKA_CLIENT_SERVICEURL_DEFAULTZONE: "http://eurekaserver:8075/eureka/"
+      NUMBER_OF_ROOMS: 5
+    extends:
+      file: common-config.yaml
+      service: network-deploy-service
+

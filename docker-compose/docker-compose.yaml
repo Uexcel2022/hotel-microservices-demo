@@ -1,0 +1,57 @@
+services:
+  gatewayserver:
+    extends:
+      file: gatewayserver.yaml
+      service: gatewayserver
+#-----------------------------------------------------------------
+  eurekaserver:
+    extends:
+      file: "eurekaserver.yaml"
+      service: "eureka"
+
+#----------------------------------------------------------------
+  apartmentDB:
+    extends:
+      file: DBServices.yaml
+      service: apartmentDB
+  apartment:
+    depends_on:
+      apartmentDB:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+    extends:
+      file: apartment.yaml
+      service: apartment
+#----------------------------------------------------------------------
+  executiveDB:
+    extends:
+      file: DBServices.yaml
+      service: executiveDB
+  executive:
+    depends_on:
+      executiveDB:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+    extends:
+      file: executive.yaml
+      service: executive
+#-------------------------------------------------------------------------
+  regularDB:
+    extends:
+      file: DBServices.yaml
+      service: regularDB
+  regular:
+    depends_on:
+      regularDB:
+        condition: service_healthy
+      eurekaserver:
+        condition: service_healthy
+    extends:
+      file: regular.yaml
+      service: regular
+#--------------------------------------------------------------------
+networks:
+  hotel:
+    driver: "bridge"
