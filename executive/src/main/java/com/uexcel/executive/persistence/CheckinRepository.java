@@ -10,5 +10,4 @@ import java.util.List;
 public interface CheckinRepository extends JpaRepository<Checkin, Long> {
     Checkin findByExecutiveRoom_RoomNumberAndDateOut(String roomNumber, String dateOut);
     List<Checkin> findByDateOut(String dateIn);
-    boolean existsByExecutiveRoom_RoomNumberAndDateOut(String roomNumber, String dateOut);
 }

@@ -24,6 +24,6 @@ public interface ReservationDateRepository extends JpaRepository<ReservationDate
 
     @Query( value = "SELECT d FROM ReservationDates d WHERE  d.reservation.phone=:phoneNumber")
     List<ReservationDates> findByPhoneNumber(@Param("phoneNumber") String phoneNumber);
-    List<ReservationDates> findByRegularRoom_RoomNumber(String roomNumber);
+
 
 }

@@ -5,8 +5,6 @@ import com.uexcel.regular.dto.CheckinResponseDto;
 import com.uexcel.regular.model.Checkin;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 import static com.uexcel.regular.service.ICheckinService.getTime;
 
 @Component

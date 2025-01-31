@@ -9,7 +9,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: ${DDL_AUTO:update}
-  show-sql: ${SHOW_SQL:true}
+    show-sql: ${SHOW_SQL:true}
+
 management:
   endpoints:
     web:
